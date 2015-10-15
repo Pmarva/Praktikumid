@@ -1,6 +1,6 @@
 package praktikum6;
 
-import highlow.TextIO;
+import lib.TextIO;
 import meetodid.Meetodid;
 
 /**

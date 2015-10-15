@@ -1,6 +1,6 @@
 package praktikum5;
 
-import highlow.TextIO;
+import lib.TextIO;
 
 /**
  * Created by mmartins on 2.10.15.

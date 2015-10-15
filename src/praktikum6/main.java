@@ -1,9 +1,7 @@
 package praktikum6;
 
-import highlow.TextIO;
+import lib.TextIO;
 import meetodid.Meetodid;
-
-import java.util.Random;
 
 /**
  * Created by Marva on 11.10.2015.

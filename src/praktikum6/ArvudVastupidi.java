@@ -1,6 +1,6 @@
 package praktikum6;
 
-import highlow.TextIO;
+import lib.TextIO;
 
 /**
  * Created by Marva on 11.10.2015.

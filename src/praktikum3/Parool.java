@@ -1,6 +1,6 @@
 package praktikum3;
 
-import highlow.TextIO;
+import lib.TextIO;
 
 public class Parool {
 	public static void main(String[] args) {

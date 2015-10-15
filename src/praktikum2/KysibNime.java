@@ -1,6 +1,6 @@
 package praktikum2;
 
-import highlow.TextIO;
+import lib.TextIO;
 
 public class KysibNime {
 	public static void main(String[] args) {
