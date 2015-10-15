@@ -17,7 +17,6 @@ public class NimedeV2ljastus {
             String buffer= TextIO.getWord();
             nimed[i]=buffer;
         }
-
         System.out.println(nimed[Meetodid.suvalineArv(nimedeArv)]);
     }
 }
