@@ -10,15 +10,24 @@ public class Meetodid {
     public static int suvalineArv(int max) {
         return rand.nextInt(max);
     }
-    public static int[][] generateMatrix(int width, int heigth) {
-        int[][] maatrix = new int[width][heigth];
+    public static int[][] generateMatrix(int size) {
+        int[][] maatrix = new int[size][size];
 
-        for (int i=0; i<heigth;i++){
-            for (int j=0; j<width; j++) {
+        for (int i=0; i<size;i++){
+            for (int j=0; j<size; j++) {
                 maatrix[i][j]= Meetodid.suvalineArv(101);
             }
         }
         return maatrix;
+    }
+
+    public static int[] generateArray(int size) {
+        int[] massiiv = new int[size];
+
+            for (int j=0; j<size; j++) {
+                massiiv[j]= Meetodid.suvalineArv(101);
+            }
+        return massiiv;
     }
 
     public static int getMatrixMax(int[] massiiv) {
