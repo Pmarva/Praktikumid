@@ -15,7 +15,7 @@ public class MassiiviMaxElement {
     }
 
     public static int yheM66tmelinemaksimum(int[] massiiv) {
-            int maxNumber=0;
+            int maxNumber=Integer.MIN_VALUE;
         for(int arv: massiiv) {
             if(arv>maxNumber) {
                 maxNumber=arv;
@@ -25,7 +25,7 @@ public class MassiiviMaxElement {
     }
 
     public static int maatrixMaksimum(int[][] massiiv) {
-        int maxNumber=0;
+        int maxNumber=Integer.MIN_VALUE;
         int buffer=0;
         for(int[] arv: massiiv) {
             buffer=yheM66tmelinemaksimum(arv);

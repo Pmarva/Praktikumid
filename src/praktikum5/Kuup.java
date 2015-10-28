@@ -8,7 +8,6 @@ import lib.TextIO;
 public class Kuup {
     public static void main(String[] arg) {
         System.out.println(kuup(2));
-
     }
 
     public static int kuup(int a) {
