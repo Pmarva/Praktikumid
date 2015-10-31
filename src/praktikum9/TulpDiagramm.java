@@ -18,10 +18,11 @@ public class TulpDiagramm {
                 numbrid.add(number);
             }
         }
-        tulpDiagramm(numbrid);
+        //tulpDiagrammHoriz(numbrid);
+        tuldDiagrammVert(numbrid);
     }
 
-    public static void tulpDiagramm(ArrayList<Integer> m) {
+    public static void tulpDiagrammHoriz(ArrayList<Integer> m) {
 
         int suurim=Integer.MIN_VALUE;
         double kons = 1.0;
@@ -44,6 +45,35 @@ public class TulpDiagramm {
                 System.out.print("x");
             }
             System.out.println();
+        }
+    }
+
+    public static void tuldDiagrammVert(ArrayList<Integer> m){
+        int suurimElement=Integer.MIN_VALUE;
+
+        for (Integer number:m) {
+            if(number>suurimElement) {
+                suurimElement=number;
+            }
+        }
+
+        for (int i=suurimElement; i>0;i--){
+            for (int j=0; j<m.size();j++){
+                if(m.get(j)>=i && m.get(j)<=suurimElement) {
+                    System.out.printf("%-2s","x");
+                } else{
+                    System.out.printf("%-2s"," ");
+                }
+            }
+            System.out.println();
+        }
+        for (Integer arv:m){
+            System.out.print("--");
+        }
+
+        System.out.println();
+        for (Integer arv:m){
+            System.out.printf("%-2d",arv);
         }
     }
 }

@@ -5,17 +5,16 @@ package praktikum9;
  */
 public class RekursiivneAstenadmine {
     public static void main(String[] args) {
-        System.out.println(astenda(2, 3));
+        System.out.println(astenda(2,5));
     }
 
     public static int astenda(int number,int pow) {
         if(pow==0) {
-            return number;
+            return 1;
         } else if(pow==1) {
             return number;
         } else {
-            int vastus = number*number;
-            return astenda(vastus,pow-1);
+            return number*astenda(number,pow-1);
         }
     }
 }

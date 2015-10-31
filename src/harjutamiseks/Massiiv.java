@@ -17,7 +17,7 @@ public class Massiiv {
 
     public static int score(int[] massiiv){
         int [] tulemused = massiiv;
-        Arrays.sort(tulemused);
+        Arrays.sort(tulemused); //sorteerime kasvavas jrk..
         int summa=0;
 
        for (int tulemus:tulemused){
