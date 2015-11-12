@@ -1,22 +1,22 @@
 package meetodid;
 
-import java.util.Random;
+            import java.util.Random;
 
 /**
  * Created by Marva on 11.10.2015.
  */
-public class Meetodid {
-    public static Random rand = new Random();
-    public static int suvalineArv(int max) {
-        return rand.nextInt(max);
-    }
-    public static int[][] generateMatrix(int size) {
-        int[][] maatrix = new int[size][size];
+            public class Meetodid {
+                public static Random rand = new Random();
+                public static int suvalineArv(int max) {
+                    return rand.nextInt(max);
+                }
+                public static int[][] generateMatrix(int size) {
+                    int[][] maatrix = new int[size][size];
 
-        for (int i=0; i<size;i++){
-            for (int j=0; j<size; j++) {
-                maatrix[i][j]= Meetodid.suvalineArv(101);
-            }
+                    for (int i=0; i<size;i++){
+                        for (int j=0; j<size; j++) {
+                            maatrix[i][j]= Meetodid.suvalineArv(101);
+                        }
         }
         return maatrix;
     }
@@ -73,7 +73,4 @@ public class Meetodid {
         }
         return minNumber;
     }
-
-
-
 }
