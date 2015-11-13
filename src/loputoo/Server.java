@@ -14,10 +14,11 @@ public class Server {
         try {
             ServerSocket serverSocket = new ServerSocket(12900,100, InetAddress.getByName("Localhost"));
             System.out.println("Server started at:" + serverSocket);
-
+            System.out.println("Waiting for connection ...");
             Socket activeSocket=serverSocket.accept();
             BufferedReader socketReader = new BufferedReader(new InputStreamReader(activeSocket.getInputStream()));
             BufferedWriter socketWriter = new BufferedWriter(new OutputStreamWriter(activeSocket.getOutputStream()));
+            socketWriter.flush();
 
             socketWriter.write("Tere, siia võite midagi kirjutada...");
 

@@ -1,4 +1,4 @@
-package praktikum9;
+package praktikum10;
 
 import java.io.File;
 import java.util.Arrays;
