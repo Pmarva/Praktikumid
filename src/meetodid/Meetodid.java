@@ -5,7 +5,7 @@ package meetodid;
 /**
  * Created by Marva on 11.10.2015.
  */
-            public class Meetodid {
+public class Meetodid {
                 public static Random rand = new Random();
                 public static int suvalineArv(int max) {
                     return rand.nextInt(max);

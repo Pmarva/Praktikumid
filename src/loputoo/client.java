@@ -1,6 +1,7 @@
 package loputoo;
 
 import java.io.*;
+import java.net.ConnectException;
 import java.net.Socket;
 
 /**
@@ -9,30 +10,37 @@ import java.net.Socket;
 public class Client {
     public static void main(String[] args) {
         try {
-            Socket socket = new Socket("localhost",12900);
+
+            String lineSeperator = System.getProperty("line.separator");
+
+            Socket socket = new Socket("localhost", 12900);
             System.out.println("Connected to:" + socket);
             BufferedReader socketReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             BufferedWriter socketWriter = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
             BufferedReader consoleReader = new BufferedReader(new InputStreamReader(System.in));
 
-            String outMsg=null;
+            String outMsg = null;
 
-            while((outMsg=consoleReader.readLine())!=null) {
+            while((outMsg = consoleReader.readLine()) != null) {
                 socketWriter.write(outMsg);
-                socketWriter.write(System.getProperty("line.separator"));
+                socketWriter.write(lineSeperator);
                 socketWriter.flush();
-
-                String inMsg=socketReader.readLine();
-                if(!inMsg.equals(null)) {
-                    System.out.println("Server: " + inMsg);
+                String inMsg = socketReader.readLine();
+                System.out.println("Server: " + inMsg);
+                if (inMsg == null) {
+                    System.out.println("Connection closed");
+                    break;
                 }
             }
-
             socket.close();
+        } catch(ConnectException e) {
+            System.out.println("Server ei vasta");
+            System.out.println(e.getMessage());
         } catch (IOException e) {
             e.printStackTrace();
         } catch(Exception e) {
             System.out.println("Errrrror");
+            System.out.println(e);
         }
     }
 }
