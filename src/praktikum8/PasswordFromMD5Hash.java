@@ -1,6 +1,6 @@
 package praktikum8;
 
-import org.apache.commons.codec.digest.DigestUtils;
+//import org.apache.commons.codec.digest.DigestUtils;
 import java.security.MessageDigest;
 
 /**
@@ -20,15 +20,15 @@ public class PasswordFromMD5Hash {
                         StringBuffer parool = new StringBuffer();
                         parool.insert(0,a).insert(1,b).insert(2,c).insert(3,d);
                         String paroola=parool.toString();
-                        String hash = DigestUtils.md5Hex(paroola);
+                        //String hash = DigestUtils.md5Hex(paroola);
                         System.out.println(paroola);
 
-                        if(hash.equals(md5Hash)) {
+                        //if(hash.equals(md5Hash)) {
                             System.out.println("Success!!!!");
                             System.out.println(paroola);
 
                             break outerLoop;
-                        }
+                        //}
                     }
                 }
             }

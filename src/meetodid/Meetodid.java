@@ -1,5 +1,6 @@
 package meetodid;
 
+            import java.util.ArrayList;
             import java.util.Random;
 
 /**
@@ -72,5 +73,20 @@ public class Meetodid {
             }
         }
         return minNumber;
+    }
+
+    public static double aritmethicAverage(ArrayList<String> arvud) {
+            double pikkus = (double)arvud.size();
+            double summa=0;
+
+        for (String arv:arvud) {
+            System.out.print(arv+" ");
+        }
+        System.out.println();
+
+            for (String arv:arvud) {
+                summa+=Double.parseDouble(arv);
+            }
+        return summa/pikkus;
     }
 }
