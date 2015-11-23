@@ -25,7 +25,9 @@ public class Server {
             System.out.println("Waiting for connection ...");
             Socket activeSocket = serverSocket.accept();
             Runnable runnable = () -> clientCommunication(activeSocket);
-            new Thread(runnable).start();
+            Thread t = new Thread(runnable);
+            t.setDaemon(true);
+            t.start();
         }
     }
 

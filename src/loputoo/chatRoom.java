@@ -16,6 +16,18 @@ public class ChatRoom {
         this.owner=owner;
     }
 
+    public void join(User s) {
+        users.add(s);
+    }
+
+    public void sendMessage(String message, User u) {
+        for (User s : users) {
+            if (s != u) {
+                s.sendMessage(message);
+            }
+        }
+    }
+
     @Override
     public String toString() {
         return name;
