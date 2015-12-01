@@ -9,11 +9,13 @@ import java.io.IOException;
 public class User {
     private String name=null;
     private BufferedWriter socketWriter;
+    private String mode;
 
     public User(String name,BufferedWriter socketWriter) {
         this.name=name;
         this.socketWriter=socketWriter;
     }
+
 
     public void sendMessage(String message) {
 

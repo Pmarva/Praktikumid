@@ -2,9 +2,10 @@ package loputoo;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
-import jdk.jfr.events.SocketReadEvent;
-
 import java.io.*;
 import java.net.ConnectException;
 import java.net.Socket;
@@ -18,7 +19,7 @@ public class Client extends Application {
     Stage window;
 
     public static void main(String[] args) {
-
+        launch(args); //koige algus, mis k2ivitab start meetodi.
         try {
             String lineSeperator = System.getProperty("line.separator");
             Socket socket = new Socket("localhost", 12900);
@@ -50,7 +51,20 @@ public class Client extends Application {
     }
 
     public void start(Stage primaryStage) throws Exception {
+
         window = primaryStage;
+        BorderPane bp = new BorderPane();
+        Button sendButtpon = new Button("Send message");
+        TextField sisestus = new TextField();
+        sisestus.setPrefWidth(500.0);
+        HBox hbox = new HBox();
+        hbox.getChildren().addAll(sisestus,sendButtpon);
+        bp.setBottom(hbox);
+
+        scene = new Scene(bp,600,600);
+        window.setScene(scene);
+        window.setTitle("AwsomeJavaChat 0.01");
+        window.show();
     }
 
     public static void getFromServer(){

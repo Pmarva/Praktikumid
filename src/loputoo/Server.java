@@ -1,10 +1,7 @@
 package loputoo;
 
 import java.io.*;
-import java.net.InetAddress;
-import java.net.ServerSocket;
-import java.net.InetSocketAddress;
-import java.net.Socket;
+import java.net.*;
 import java.util.ArrayList;
 
 /**
@@ -17,7 +14,6 @@ public class Server {
 
 
     public static void main(String[] args) throws Exception {
-
         ServerSocket serverSocket = new ServerSocket(12900, 100, InetAddress.getByName("Localhost"));
         System.out.println("Server started at:" + serverSocket);
 
@@ -33,40 +29,49 @@ public class Server {
 
     public static void clientCommunication(Socket activeSocket) {
         try {
-            User kasutaja;
             BufferedReader socketReader = new BufferedReader(new InputStreamReader(activeSocket.getInputStream()));
             BufferedWriter socketWriter = new BufferedWriter(new OutputStreamWriter(activeSocket.getOutputStream()));
-            socketWriter.write("Sisestage kasutajanimi:");
-            socketWriter.newLine();
-            socketWriter.flush();
+            User kasutaja = new User("GUEST",socketWriter);
+//             socketWriter.write("Sisestage kasutajanimi:");
+//            socketWriter.newLine();
+//            socketWriter.flush();
 
-            String nimi = socketReader.readLine();
-            kasutaja = new User(nimi,socketWriter);
-            clients.add(kasutaja);
-            socketWriter.write("Tere: " + kasutaja.toString());
-            socketWriter.newLine();
-            socketWriter.flush();
+//            String nimi = socketReader.readLine();
+
+            //socketWriter.write("Tere: " + kasutaja.toString());
+            //socketWriter.newLine();
+            //socketWriter.flush();
             String teade = null;
+            String[] content = null;
+            String message;
 
             while ((teade = socketReader.readLine()) != null) {
-
-                if (teade.equals("exit")) {
-                    clients.remove(kasutaja);
-                    break;
-                } else if(teade.equals("newRoom")) {
-                    newChatRoom("Testikas",kasutaja);
-                } else if(teade.equals("showRooms")) {
-                    showChatRooms();
+                    content = getPrefix(teade);
+                if (content[0].equals("NICK")) {
+                        kasutaja = new User(content[1],socketWriter);
+                        clients.add(kasutaja);
+                        //String message = ":"+kasutaja+" MODE "+kasutaja+" :+i";
+                        //System.out.println(message);
+                        //kasutaja.sendMessage(message);
+                        message = ":127.0.0.1 001 "+kasutaja+" :Welcome to the fancy java IRC server chat";
+                        System.out.println(message);
+                        kasutaja.sendMessage(message);
+                } else if(content[0].equals("PING")) {
+                    String s = "PONG :"+content[1];
+                    kasutaja.sendMessage(s);
+                } else if(teade.equals("JOIN")) {
+                    
                 } else if(teade.equals("join")) {
 
                 }
 
-                String message = "Message from " + kasutaja + ": " + teade;
-                sendMessage(message, kasutaja);
-                System.out.println(message);
-
+               // String message = "Message from " + kasutaja + ": " + teade;
+                //sendMessage(message, kasutaja);
+                System.out.println(teade);
             }
             activeSocket.close();
+        }catch (SocketException e) {
+            System.out.println("Klient lahkus");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -100,6 +105,17 @@ public class Server {
                 String teade = u+"connected";
             }
         }
+    }
+
+    public static String[] getPrefix(String input) {
+        CharSequence cs = " :";
+        String[] s;
+        if(input.contains(cs)) {
+            s = input.split(" \\:");
+        } else {
+            s = input.split(" ");
+        }
+        return s;
     }
 }
 
