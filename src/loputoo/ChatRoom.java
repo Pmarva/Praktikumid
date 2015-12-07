@@ -20,6 +20,18 @@ public class ChatRoom {
         users.add(s);
     }
 
+    public User getOwner() {
+        return owner;
+    }
+
+    public String getUsers() {
+        StringBuilder s = new StringBuilder();
+        for (User u:users) {
+            s.append(u+" ");
+        }
+        return s.toString();
+    }
+
     public void sendMessage(String message, User u) {
         for (User s : users) {
             if (s != u) {
